@@ -71,10 +71,6 @@ const UserDropdown = () => {
         <Avatar img={img || imgUrl} imgHeight='40' imgWidth='40' status='online' />
       </DropdownToggle>
       <DropdownMenu end>
-        <DropdownItem tag={Link} to='/profile'>
-          <User size={14} className='me-75' />
-          <span className='align-middle'>Profile</span>
-        </DropdownItem>
         <DropdownItem className='w-100' onClick={() => logout()}>
           <Power size={14} className='me-75' />
           <span className='align-middle'>Logout</span>

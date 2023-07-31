@@ -5,13 +5,13 @@ import layout from "./layout";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 import authReducer from "./auth/slice";
-import clubReducer from "./clubs/slice"
+import workoutReducer from "./workouts/slice"
 
 const rootReducer = {
   navbar,
   layout,
   auth: authReducer,
-  club: clubReducer
+  workout: workoutReducer
 };
 
 const customizedMiddleware = getDefaultMiddleware({

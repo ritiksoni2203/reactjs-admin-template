@@ -30,14 +30,8 @@ const LoginCover = () => {
         <div className='auth-inner my-2'>
           <Card className='mb-0'>
             <CardBody>
-              <Link className='brand-logo align-items-center d-flex justify-content-center mt-1 mb-2' to='/' onClick={e => e.preventDefault()}>
-                {/* <img src={logo} alt='logo' className="dope-logo" />
-                <img src={text} alt='logo' className="logo-text" /> */}
-                <div className='logo-img'></div>
-                <div className='logo-text'></div>
-              </Link>
               <CardTitle tag='h4' className='mb-1'>
-                Welcome to DOPE-golf! 👋
+                Welcome! 👋
               </CardTitle>
               <CardText className='mb-2'>Please sign-in to your account and start the adventure</CardText>
               <Formik
@@ -89,7 +83,6 @@ const LoginCover = () => {
                               {errors.password}
                             </p>
                           ) : null}
-                          <Link to='/forgot-password' className='ms-auto error-form'>Forgot Password?</Link>
                         </div>
                       </div>
                       <div className="position-relative">
@@ -101,6 +94,7 @@ const LoginCover = () => {
                             <span className="Loading1"></span>
                           </div>}
                       </div>
+                      <Link to='/register' className='text-center d-block mt-2 error-form'>Sign Up</Link>
                     </Form>
                   </>)}
               </Formik>

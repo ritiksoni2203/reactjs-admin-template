@@ -6,9 +6,15 @@ export default [
     navLink: '/home'
   },
   {
-    id: 'clubs',
-    title: 'Clubs',
+    id: 'goals',
+    title: 'Goals',
     // icon: <Users size={20} />,
-    navLink: '/clubs'
+    navLink: '/goals'
+  },
+  {
+    id: 'workouts',
+    title: 'Workouts',
+    // icon: <Users size={20} />,
+    navLink: '/workouts'
   },
 ]

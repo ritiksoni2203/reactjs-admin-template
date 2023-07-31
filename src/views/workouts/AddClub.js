@@ -37,7 +37,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 // Third Party Components
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
-import { addClub, clubsListApi } from "../../redux/clubs/slice";
+import { addClub, workoutsList } from "../../redux/workouts/slice";
 import CustomSpinner from "../../@core/components/customSpinner";
 import ReactSelect from "react-select";
 
@@ -63,7 +63,7 @@ const AddClub = () => {
   ];
 
   useEffect(() => {
-    if (reload !== null) clubsListApi();
+    if (reload !== null) workoutsList();
   }, [reload]);
 
   const logoChange = (files, setFieldValue) => {
@@ -118,7 +118,7 @@ const AddClub = () => {
             }).then((result) => {
               if (result.isConfirmed) {
                 history.push("/clubs");
-                dispatch(clubsListApi());
+                dispatch(workoutsList());
               }
             });
             dispatch(addClub({ data: formData }));

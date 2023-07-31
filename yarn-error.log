@@ -1,29 +1,29 @@
 Arguments: 
-  /Users/macmii/.nvm/versions/node/v16.15.0/bin/node /usr/local/bin/yarn add react-beautful-dnd
+  C:\Program Files\nodejs\node.exe C:\Users\ritik\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @typescript-eslint
 
 PATH: 
-  /Users/macmii/.nvm/versions/node/v16.15.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Little Snitch.app/Contents/Components:/Library/Apple/usr/bin
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;%NVM_HOME%;%NVM_SYMLINK%;C:\Users\ritik\AppData\Local\Microsoft\WindowsApps;C:\Users\ritik\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ritik\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\ritik\AppData\Roaming\npm;
 
 Yarn version: 
-  1.22.18
+  1.22.19
 
 Node version: 
-  16.15.0
+  16.18.0
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-beautful-dnd: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66138:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
-      at Request.emit (node:events:527:28)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141855:10)
-      at Request.emit (node:events:527:28)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141777:12)
-      at Object.onceWrapper (node:events:641:28)
-      at IncomingMessage.emit (node:events:539:35)
-      at endReadableNT (node:internal/streams/readable:1345:12)
+  Error: https://registry.yarnpkg.com/@typescript-eslint: Request "https://registry.yarnpkg.com/@typescript-eslint" returned a 405
+      at Request.params.callback [as _callback] (C:\Users\ritik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66154:18)
+      at Request.self.callback (C:\Users\ritik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (C:\Users\ritik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (C:\Users\ritik\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
       at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
@@ -77,6 +77,7 @@ npm manifest:
       "rc-input-number": "7.3.3",
       "react": "17.0.2",
       "react-apexcharts": "1.3.9",
+      "react-beautiful-dnd": "^13.1.0",
       "react-chartjs-2": "3.3.0",
       "react-contexify": "5.0.0",
       "react-copy-to-clipboard": "5.0.2",
@@ -1187,6 +1188,13 @@ Lockfile:
     dependencies:
       regenerator-runtime "^0.13.4"
   
+  "@babel/runtime@^7.15.4":
+    version "7.18.9"
+    resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
+    integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
+    dependencies:
+      regenerator-runtime "^0.13.4"
+  
   "@babel/template@^7.16.7", "@babel/template@^7.3.3":
     version "7.16.7"
     resolved "https://registry.npmjs.org/@babel/template/-/template-7.16.7.tgz"
@@ -2195,6 +2203,14 @@ Lockfile:
     dependencies:
       "@types/node" "*"
   
+  "@types/hoist-non-react-statics@^3.3.0":
+    version "3.3.1"
+    resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+    integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+    dependencies:
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+  
   "@types/html-minifier-terser@^6.0.0":
     version "6.1.0"
     resolved "https://registry.npmjs.org/@types/html-minifier-terser/-/html-minifier-terser-6.1.0.tgz"
@@ -2280,6 +2296,16 @@ Lockfile:
     version "1.2.4"
     resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
     integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
+  
+  "@types/react-redux@^7.1.20":
+    version "7.1.24"
+    resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.24.tgz#6caaff1603aba17b27d20f8ad073e4c077e975c0"
+    integrity sha512-7FkurKcS1k0FHZEtdbbgN8Oc6b+stGSfZYjQGicofJ0j4U0qIn/jaSvnP2pLwZKiai3/17xqqxkkrxTgN8UNbQ==
+    dependencies:
+      "@types/hoist-non-react-statics" "^3.3.0"
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+      redux "^4.0.0"
   
   "@types/react-transition-group@^4.4.0":
     version "4.4.4"
@@ -3772,6 +3798,13 @@ Lockfile:
     integrity sha512-VS90XWtsHGqoM0t4KpH053c4ehxZ2E6HtGI7x68YFV0pTo/QmkV/YFA+NnlvK8guxZVNWGQhVNJGC39Q8XF4OQ==
     dependencies:
       postcss-selector-parser "^6.0.9"
+  
+  css-box-model@^1.2.0:
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
+    integrity sha512-a7Vr4Q/kd/aw96bnJG332W9V9LkJO69JRcaCYDUqjp6/z0w6VcZjgAcTbgFxEPfBgdnAwlh3iwu+hLopa+flJw==
+    dependencies:
+      tiny-invariant "^1.0.6"
   
   css-color-keywords@^1.0.0:
     version "1.0.0"
@@ -5413,7 +5446,7 @@ Lockfile:
       tiny-warning "^1.0.0"
       value-equal "^1.0.1"
   
-  hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1:
+  hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
     version "3.3.2"
     resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
     integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -8259,6 +8292,19 @@ Lockfile:
       regenerator-runtime "^0.13.9"
       whatwg-fetch "^3.6.2"
   
+  react-beautiful-dnd@^13.1.0:
+    version "13.1.0"
+    resolved "https://registry.yarnpkg.com/react-beautiful-dnd/-/react-beautiful-dnd-13.1.0.tgz#ec97c81093593526454b0de69852ae433783844d"
+    integrity sha512-aGvblPZTJowOWUNiwd6tNfEpgkX5OxmpqxHKNW/4VmvZTNTbeiq7bA3bn5T+QSF2uibXB0D1DmJsb1aC/+3cUA==
+    dependencies:
+      "@babel/runtime" "^7.9.2"
+      css-box-model "^1.2.0"
+      memoize-one "^5.1.1"
+      raf-schd "^4.0.2"
+      react-redux "^7.2.0"
+      redux "^4.0.4"
+      use-memo-one "^1.1.1"
+  
   react-chartjs-2@3.3.0:
     version "3.3.0"
     resolved "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-3.3.0.tgz"
@@ -8406,7 +8452,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
   
-  react-is@^17.0.1:
+  react-is@^17.0.1, react-is@^17.0.2:
     version "17.0.2"
     resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
     integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
@@ -8485,6 +8531,18 @@ Lockfile:
       loose-envify "^1.4.0"
       prop-types "^15.7.2"
       react-is "^16.9.0"
+  
+  react-redux@^7.2.0:
+    version "7.2.8"
+    resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.8.tgz#a894068315e65de5b1b68899f9c6ee0923dd28de"
+    integrity sha512-6+uDjhs3PSIclqoCk0kd6iX74gzrGc3W5zcAjbrFgEdIjRSQObdIwfx80unTkVUYvbQ95Y8Av3OvFHq1w5EOUw==
+    dependencies:
+      "@babel/runtime" "^7.15.4"
+      "@types/react-redux" "^7.1.20"
+      hoist-non-react-statics "^3.3.2"
+      loose-envify "^1.4.0"
+      prop-types "^15.7.2"
+      react-is "^17.0.2"
   
   react-refresh@^0.11.0:
     version "0.11.0"
@@ -8783,7 +8841,7 @@ Lockfile:
       loose-envify "^1.4.0"
       symbol-observable "^1.2.0"
   
-  redux@^4.1.2:
+  redux@^4.0.0, redux@^4.0.4, redux@^4.1.2:
     version "4.2.0"
     resolved "https://registry.npmjs.org/redux/-/redux-4.2.0.tgz"
     integrity sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==
@@ -9868,7 +9926,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz"
     integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
   
-  tiny-invariant@^1.0.2, tiny-invariant@^1.1.0:
+  tiny-invariant@^1.0.2, tiny-invariant@^1.0.6, tiny-invariant@^1.1.0:
     version "1.2.0"
     resolved "https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.2.0.tgz"
     integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
@@ -10113,6 +10171,11 @@ Lockfile:
     integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
     dependencies:
       punycode "^2.1.0"
+  
+  use-memo-one@^1.1.1:
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/use-memo-one/-/use-memo-one-1.1.2.tgz#0c8203a329f76e040047a35a1197defe342fab20"
+    integrity sha512-u2qFKtxLsia/r8qG0ZKkbytbztzRb317XCkT7yP8wxL0tZ/CzK2G+WWie5vWvpyeP7+YoPIwbJoIHJ4Ba4k0oQ==
   
   util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
     version "1.0.2"

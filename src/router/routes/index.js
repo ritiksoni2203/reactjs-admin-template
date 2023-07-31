@@ -15,44 +15,28 @@ const Routes = [
     component: lazy(() => import('../../views/home/Home')),
   },
   {
-    path: '/forgot-password',
-    component: lazy(() => import('../../views/authentication/ForgotPassword')),
+    path: '/register',
+    component: lazy(() => import('../../views/authentication/Register')),
     layout: 'BlankLayout',
     meta: {
       authRoute: true
     }
   },
   {
-    path: '/reset-password',
-    component: lazy(() => import('../../views/authentication/ResetPassword')),
-    layout: 'BlankLayout',
-    meta: {
-      authRoute: true
-    }
+    path: '/workouts',
+    component: lazy(() => import('../../views/workouts/index')),
   },
   {
-    path: '/otp',
-    component: lazy(() => import('../../views/authentication/Otp')),
-    layout: 'BlankLayout',
-    meta: {
-      authRoute: true
-    }
-  },
-  {
-    path: '/profile',
-    component: lazy(() => import('../../views/account-settings/Profile')),
-  },
-  {
-    path: '/clubs',
-    component: lazy(() => import('../../views/clubs/index')),
+    path: '/goals',
+    component: lazy(() => import('../../views/goals/index')),
   },
   {
     path: '/addclub',
-    component: lazy(() => import('../../views/clubs/AddClub')),
+    component: lazy(() => import('../../views/workouts/AddClub')),
   },
   {
     path: '/updateclub/:id',
-    component: lazy(() => import('../../views/clubs/UpdateClub')),
+    component: lazy(() => import('../../views/workouts/UpdateClub')),
   },
   {
     path: '/login',

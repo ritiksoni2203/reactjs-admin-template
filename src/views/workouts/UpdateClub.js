@@ -42,7 +42,7 @@ import {
   clearClubProfile,
   clubProfileApi,
   updateClubApi,
-} from "../../redux/clubs/slice";
+} from "../../redux/workouts/slice";
 import CustomSpinner from "../../@core/components/customSpinner";
 import ReactSelect from "react-select";
 

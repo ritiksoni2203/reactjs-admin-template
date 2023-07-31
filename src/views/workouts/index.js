@@ -18,21 +18,15 @@ import "../../assets/scss/custom.scss";
 import Swal from "sweetalert2";
 import { useSelector, useDispatch } from "react-redux";
 import withReactContent from 'sweetalert2-react-content'
-import { activeClubsListApi, activeInactiveClub, clearClubList, clearClubReload, clubsListApi, deleteClub } from "../../redux/clubs/slice";
+import { activeInactiveClub, clearClubList, clearClubReload, workoutsList, deleteClub } from "../../redux/workouts/slice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import CustomSpinner from "../../@core/components/customSpinner";
 import CustomTable from "../../@core/components/table/CustomTable";
 
-const Clubs = () => {
+const Workouts = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  let { data, reload, status, count, process } = useSelector((store) => ({
-    data: store.club.tableData,
-    reload: store.club.reload,
-    status: store.club.status,
-    count: store.club.totalCount,
-    process: store.club.process
-  }));
+  let { data, reload } = useSelector((store) => (store.workout));
   const [view, setView] = useState('');
   const [search, setSearch] = useState(null);
   const [perPage, setPerPage] = useState(10);
@@ -48,11 +42,9 @@ const Clubs = () => {
 
   const [modal, setModal] = useState(null)
 
-  const admin = localStorage.getItem("isAdmin") === "true" ? true : false;
-
   useEffect(() => {
     if (reload !== null) {
-      { admin ? dispatch(clubsListApi({ page: currentPage, limit: perPage, search })) : dispatch(activeClubsListApi({ page: currentPage, limit: perPage, search })) }
+      dispatch(workoutsList({ page: currentPage, limit: perPage, search }))
     }
   }, [reload]);
 
@@ -66,7 +58,7 @@ const Clubs = () => {
   useEffect(() => {
     setCurrentPage(1)
     if (search !== null) {
-      { admin ? dispatch(clubsListApi({ page: 1, limit: perPage, search })) : dispatch(activeClubsListApi({ page: 1, limit: perPage, search })) }
+      dispatch(workoutsList({ page: 1, limit: perPage, search }))
     }
   }, [search]);
 
@@ -74,8 +66,8 @@ const Clubs = () => {
 
   const deleteHandler = (row) => {
     return MySwal.fire({
-      title: 'Delete Club',
-      text: "Are you sure you want to delete this club?",
+      title: 'Delete Workout',
+      text: "Are you sure you want to delete this workout?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -99,12 +91,10 @@ const Clubs = () => {
   const ColumnHeaders = () => (
     <>
       <th>No.</th>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Description</th>
-      {/* <th>Range</th>
-      <th>Shaft Length</th> */}
-      {!admin && <th>Status</th>}
+      <th>Workout Type</th>
+      <th>Duration</th>
+      <th>Calories Burned</th>
+      <th>Date</th>
       <th>Action</th>
     </>
   );
@@ -115,79 +105,51 @@ const Clubs = () => {
 
   const DataRows = () => (
     <>
-      {(data?.results || []).map((row, index) => (
+      {(data || []).map((row, index) => (
         <tr key={index}>
           <td>
-            <p className="club-no">{(data?.page - 1) * data?.limit + index + 1}</p>
+            <p className="club-no">{index + 1}</p>
+          </td>
+          <td>
+            {row?.workoutType}
+          </td>
+          <td>
+            <p className="mb-0">{row?.duration}</p>
+          </td>
+          <td>
+            {row?.caloriesBurned}
+          </td>
+          <td>
+            {row?.date.split('T')[0]}
           </td>
           <td>
             <div className="d-flex align-items-center gap-1">
-              <img src={row.clubImage} className="club-image" />
-            </div>
-          </td>
-          <td>{row?.name}</td>
-          <td>
-            <p className="mb-0">{row?.url}</p>
-          </td>
-          {/* <td>
-            {row?.clubRange}
-          </td>
-          <td>
-            {row?.shaftLength}
-          </td> */}
-          {!admin && (
-            <td>
-              <div className="custom-control custom-switch form-check form-switch">
-                <input
-                  type="checkbox"
-                  checked={row.isActive}
-                  className="form-check-input status-switch"
-                  role="switch"
-                  id="flexSwitchCheckDefault"
-                  onChange={(e) => activeHandler(e, row)}
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="flexSwitchCheckDefault"
-                ></label>
+              <div
+                className="cursor-pointer"
+                onClick={() => deleteHandler(row)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="red"
+                  className="bi bi-trash"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                  />
+                </svg>
               </div>
-            </td>
-          )}
-          <td>
-            <div className="d-flex align-items-center gap-1">
-              {!admin && (
-                <>
-                  <div
-                    className="cursor-pointer"
-                    onClick={() => deleteHandler(row)}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="red"
-                      className="bi bi-trash"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                      />
-                    </svg>
-                  </div>
-                  <div
-                    className="edit-club"
-                    onClick={() => {
-                      history.push(`/updateclub/${row.id}`);
-                    }}
-                  >
-                    <Edit color="gray" size={15} />
-                  </div>
-                </>
-              )}
-              <div className="cursor-pointer" onClick={() => viewHandler(row)}>
-                <Eye color="gray" size={15} />
+              <div
+                className="edit-club"
+                onClick={() => {
+                  history.push(`/updateclub/${row.id}`);
+                }}
+              >
+                <Edit color="gray" size={15} />
               </div>
             </div>
           </td>
@@ -199,30 +161,30 @@ const Clubs = () => {
   const handlePerPageChange = (page) => {
     setPerPage(page);
     setCurrentPage(1);
-    { admin ? dispatch(clubsListApi({ page: 1, limit: page, search })) : dispatch(activeClubsListApi({ page: 1, limit: page, search })) }
+    dispatch(workoutsList({ page: 1, limit: page, search }))
   };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    {admin ? dispatch(clubsListApi({ page: pageNumber, limit: perPage, search })) : dispatch(activeClubsListApi({ page: pageNumber, limit: perPage, search }))}
+    dispatch(workoutsList({ page: pageNumber, limit: perPage, search }))
   };
 
   return (
     <>
-      {(status === "loading" || process === 'loading') && <CustomSpinner />}
+      {status === "loading" && <CustomSpinner />}
       <Row className="justify-content-between align-items-center mb-2">
         <Col md='6'>
-          <Breadcrumbs breadCrumbTitle='Clubs' breadCrumbParent={{ name: "Home", route: "/home" }} breadCrumbActive='Clubs' />
+          <Breadcrumbs breadCrumbTitle='Workouts' breadCrumbParent={{ name: "Home", route: "/home" }} breadCrumbActive='Workouts' />
         </Col>
         <Col md='6' className="d-flex justify-content-end">
           <div className='d-flex mt-md-0 mt-1'>
-            {!admin && <Button tag={Link} to='/addclub' className="btn btn-danger ms-2">Add Club</Button>}
+            <Button tag={Link} to='/addclub' className="btn btn-danger ms-2">Add Workout</Button>
           </div>
         </Col>
       </Row>
       <Card className="overflow-hidden">
         <CardHeader>
-          <CardTitle tag="h4">Clubs List</CardTitle>
+          <CardTitle tag="h4">Workouts List</CardTitle>
         </CardHeader>
         <div className="react-dataTable name-width club-table">
           <CustomTable
@@ -281,4 +243,4 @@ const ModalHandler = ({ modal, toggleModal, view }) => {
   )
 }
 
-export default Clubs;
+export default Workouts;

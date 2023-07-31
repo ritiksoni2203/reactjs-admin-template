@@ -5,7 +5,7 @@ import { axiosApi } from "../../helpers/axios";
 
 const initialStates = {
     test: [],
-    tableData: [],
+    data: [],
     status: null,
     process: null,
     reload: [],
@@ -16,12 +16,13 @@ const initialStates = {
 };
 
 // ** Clubs List
-export const clubsListApi = createAsyncThunk(
-    "clubsListApi",
+export const workoutsList = createAsyncThunk(
+    "workoutsList",
     async ({ page, limit, search }, { rejectWithValue }) => {
         try {
-            const response = await axiosApi.get(`pokemon?limit=100000&offset=0`);
-            return response.data.data;
+            const response = await axiosApi.get(`/workout`);
+            console.log('res', response.data);
+            return response.data;
         } catch (error) {
             if (!error.response) {
                 throw error;
@@ -142,21 +143,21 @@ export const activeInactiveClub = createAsyncThunk(
     }
 );
 
-const clubSlice = createSlice({
-    name: "club",
+const workoutSlice = createSlice({
+    name: "workout",
     initialState: initialStates,
     extraReducers: {
-        [clubsListApi.pending]: (state) => {
+        [workoutsList.pending]: (state) => {
             state.status = "loading";
         },
-        [clubsListApi.fulfilled]: (state, action) => {
+        [workoutsList.fulfilled]: (state, action) => {
             state.status = "succeeded";
-            state.tableData = action.payload;
+            state.data = action.payload;
             state.isSuccess = false;
             state.reload = null;
             state.totalCount = action.payload.totalResults;
         },
-        [clubsListApi.rejected]: (state, action) => {
+        [workoutsList.rejected]: (state, action) => {
             state.status = "failed";
             state.error = action.payload;
         },
@@ -165,7 +166,7 @@ const clubSlice = createSlice({
         },
         [activeClubsListApi.fulfilled]: (state, action) => {
             state.status = "succeeded";
-            state.tableData = action.payload;
+            state.data = action.payload;
             state.isSuccess = false;
             state.reload = null;
             state.totalCount = action.payload.totalResults;
@@ -239,13 +240,13 @@ const clubSlice = createSlice({
             state.reload = []
         },
         clearClubList(state) {
-            state.tableData = []
+            state.data = []
         }
     }
 });
 
-export const { clearClubProfile, clearClubReload, clearClubList } = clubSlice.actions
+export const { clearClubProfile, clearClubReload, clearClubList } = workoutSlice.actions
 
-const { reducer } = clubSlice;
+const { reducer } = workoutSlice;
 
 export default reducer;
