@@ -78,7 +78,7 @@ const AddWorkout = () => {
       <BreadCrumbs
         breadCrumbTitle="Add Club"
         breadCrumbParent={{ name: "Home", route: "/home" }}
-        breadCrumbParent2={{ name: "Clubs", route: "/clubs" }}
+        breadCrumbParent2={{ name: "Workouts", route: "/workouts" }}
         breadCrumbActive="Add Club"
       />
       <Card className="p-3 mt-2">

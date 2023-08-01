@@ -67,7 +67,7 @@ const ProgressChart = ({ success, gridLineColor, labelColor }) => {
         const uniquegoalTypes = Array.from(new Set(goalData.map((goal) => goal.workoutType)));
         return uniquegoalTypes;
     }, [goalData]);
-    console.log('fff', goalOptions);
+    
     useEffect(() => {
         dispatch(goalsList());
         dispatch(workoutsList());
