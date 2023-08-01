@@ -1,12 +1,10 @@
 import { lazy } from 'react'
 
 // ** Document title
-const TemplateTitle = 'DOPE GOLF'
+const TemplateTitle = 'FITNESS TRACKER'
 
 // ** Default Route
 const DefaultRoute = '/home'
-
-const admin = localStorage.getItem("isAdmin") === "true" ? true : false
 
 // ** Merge Routes
 const Routes = [
