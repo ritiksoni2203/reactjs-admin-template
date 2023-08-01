@@ -31,12 +31,20 @@ const Routes = [
     component: lazy(() => import('../../views/goals/index')),
   },
   {
-    path: '/addclub',
-    component: lazy(() => import('../../views/workouts/AddClub')),
+    path: '/addworkout',
+    component: lazy(() => import('../../views/workouts/AddWorkout')),
   },
   {
-    path: '/updateclub/:id',
-    component: lazy(() => import('../../views/workouts/UpdateClub')),
+    path: '/editworkout/:id',
+    component: lazy(() => import('../../views/workouts/AddWorkout')),
+  },
+  {
+    path: '/addgoal',
+    component: lazy(() => import('../../views/goals/AddGoal')),
+  },
+  {
+    path: '/editgoal/:id',
+    component: lazy(() => import('../../views/goals/AddGoal')),
   },
   {
     path: '/login',

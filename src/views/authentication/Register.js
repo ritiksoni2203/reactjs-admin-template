@@ -19,9 +19,10 @@ const Register = () => {
     const { loginData, status } = useSelector((store) => store.auth);
 
     useEffect(() => {
-        if (loginData && localStorage.access) {
-            history.push("/home")
+        if (status === 'succeeded') {
+            history.push("/login")
         }
+        dispatch(clearAuthStatus())
     }, [history, loginData]);
 
     return (

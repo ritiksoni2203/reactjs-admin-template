@@ -18,7 +18,7 @@ import "../../assets/scss/custom.scss";
 import Swal from "sweetalert2";
 import { useSelector, useDispatch } from "react-redux";
 import withReactContent from 'sweetalert2-react-content'
-import { activeInactiveClub, clearClubList, clearClubReload, workoutsList, deleteClub } from "../../redux/workouts/slice";
+import { clearClubList, clearClubReload, workoutsList, deleteWorkout } from "../../redux/workouts/slice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import CustomSpinner from "../../@core/components/customSpinner";
 import CustomTable from "../../@core/components/table/CustomTable";
@@ -78,14 +78,9 @@ const Workouts = () => {
       buttonsStyling: false
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteClub(row.id));
+        dispatch(deleteWorkout(row._id));
       }
     })
-  }
-
-  const viewHandler = (row) => {
-    setView(row)
-    setModal(true)
   }
 
   const ColumnHeaders = () => (
@@ -98,10 +93,6 @@ const Workouts = () => {
       <th>Action</th>
     </>
   );
-
-  const activeHandler = (e, row) => {
-    dispatch(activeInactiveClub({ active: e.target.checked, id: row.id }));
-  }
 
   const DataRows = () => (
     <>
@@ -120,7 +111,7 @@ const Workouts = () => {
             {row?.caloriesBurned}
           </td>
           <td>
-            {row?.date.split('T')[0]}
+            {row?.date?.split('T')[0]}
           </td>
           <td>
             <div className="d-flex align-items-center gap-1">
@@ -146,7 +137,14 @@ const Workouts = () => {
               <div
                 className="edit-club"
                 onClick={() => {
-                  history.push(`/updateclub/${row.id}`);
+                  history.push(`/editworkout/${row._id}`, {
+                    state: {
+                      workoutType: row.workoutType,
+                      caloriesBurned: row.caloriesBurned,
+                      duration: row.duration,
+                      date: row.date.split('T')[0]
+                    }
+                  });
                 }}
               >
                 <Edit color="gray" size={15} />
@@ -178,7 +176,7 @@ const Workouts = () => {
         </Col>
         <Col md='6' className="d-flex justify-content-end">
           <div className='d-flex mt-md-0 mt-1'>
-            <Button tag={Link} to='/addclub' className="btn btn-danger ms-2">Add Workout</Button>
+            <Button tag={Link} to='/addworkout' className="btn btn-danger ms-2">Add Workout</Button>
           </div>
         </Col>
       </Row>

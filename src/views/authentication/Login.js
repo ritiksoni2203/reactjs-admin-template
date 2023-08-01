@@ -20,7 +20,7 @@ const LoginCover = () => {
 
   useEffect(() => {
     if (loginData && localStorage.access) {
-      history.push("/home")
+      history.push("/")
     }
   }, [history, loginData]);
 

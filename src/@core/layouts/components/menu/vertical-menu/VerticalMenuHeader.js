@@ -47,17 +47,8 @@ const VerticalMenuHeader = props => {
   return (
     <div className='navbar-header'>
       <ul className='nav navbar-nav flex-row'>
-        <li className='nav-item me-auto'>
-          <NavLink to='/home' className='navbar-brand'>
-            <span className='brand-logo'>
-             <div className='bg-img'></div>
-            </span>
-            <div className='bg-text'></div>
-          </NavLink>
-        </li>
         <li className='nav-item nav-toggle'>
           <div className='nav-link modern-nav-toggle cursor-pointer'>
-            <Toggler />
             <X onClick={() => setMenuVisibility(false)} className='toggle-icon icon-x d-block d-xl-none' size={20} />
           </div>
         </li>

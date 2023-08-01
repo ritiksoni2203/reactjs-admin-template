@@ -20,7 +20,7 @@ export const login = createAsyncThunk(
         localStorage.setItem("access", response.data.token);
         axiosApi.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${response.data.tokens.access.token}`;
+        ] = `Bearer ${response.data.token}`;
         toast.success(response.data.message);
       }
       return response;
@@ -162,8 +162,15 @@ const authSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+  },
+  reducers: {
+    clearAuthStatus(state) {
+      state.status = null
+    }
   }
 });
+
+export const { clearAuthStatus } = authSlice.actions
 
 const { reducer } = authSlice;
 

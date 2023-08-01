@@ -9,7 +9,6 @@ import { User, Power } from 'react-feather'
 
 // ** Reactstrap Imports
 import { UncontrolledDropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap'
-import { loginProfile } from '../../../../redux/auth/slice'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import withReactContent from 'sweetalert2-react-content'
@@ -26,11 +25,6 @@ const UserDropdown = () => {
   const loggedIn = () => {
     return localStorage.getItem('access') ? true : false
   }
-
-  useEffect(() => {
-    loggedIn() &&
-      dispatch(loginProfile())
-  }, [])
 
   const MySwal = withReactContent(Swal)
 
@@ -56,7 +50,6 @@ const UserDropdown = () => {
     })
   }
 
-
   useEffect(() => {
     setImg(ProfileData?.image)
   }, [ProfileData]);
@@ -68,7 +61,7 @@ const UserDropdown = () => {
           <span className='user-name fw-bold'>{ProfileData?.firstName !== undefined ? `${ProfileData?.firstName} ${ProfileData?.lastName}` : null}</span>
           <span className='user-status'>{ProfileData?.role?.role}</span>
         </div>
-        <Avatar img={img || imgUrl} imgHeight='40' imgWidth='40' status='online' />
+        <Avatar img={img || imgUrl || "https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png"} imgHeight='40' imgWidth='40' status='online' />
       </DropdownToggle>
       <DropdownMenu end>
         <DropdownItem className='w-100' onClick={() => logout()}>

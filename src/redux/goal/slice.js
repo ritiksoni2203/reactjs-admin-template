@@ -16,11 +16,11 @@ const initialStates = {
 };
 
 // ** Clubs List
-export const workoutsList = createAsyncThunk(
-    "workoutsList",
+export const goalsList = createAsyncThunk(
+    "goalsList",
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axiosApi.get(`/workout`);
+            const response = await axiosApi.get(`/goals`);
             return response.data;
         } catch (error) {
             if (!error.response) {
@@ -33,11 +33,11 @@ export const workoutsList = createAsyncThunk(
 );
 
 // ** Add Club
-export const addWorkout = createAsyncThunk(
-    "addWorkout",
+export const addGoal = createAsyncThunk(
+    "addGoal",
     async ({ data }, { rejectWithValue }) => {
         try {
-            const response = await axiosApi.post("/workout", data);
+            const response = await axiosApi.post("/goals", data);
             return response.data.data;
         } catch (error) {
             if (!error.response) {
@@ -50,11 +50,11 @@ export const addWorkout = createAsyncThunk(
 );
 
 // ** Delete Club
-export const deleteWorkout = createAsyncThunk(
-    "deleteWorkout",
+export const deletegoal = createAsyncThunk(
+    "deletegoal",
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axiosApi.delete(`/workout/${id}`);
+            const response = await axiosApi.delete(`/goal/${id}`);
             toast.success(response.data.msg);
             return response.data.data;
         } catch (error) {
@@ -68,11 +68,11 @@ export const deleteWorkout = createAsyncThunk(
 );
 
 // ** Update Club
-export const updateWorkout = createAsyncThunk(
-    "updateWorkout",
+export const updateGoal = createAsyncThunk(
+    "updateGoal",
     async ({ data, id }, { rejectWithValue }) => {
         try {
-            const response = await axiosApi.put(`/workout/${id}`, data);
+            const response = await axiosApi.put(`/goals/${id}`, data);
             return response.data.data;
         } catch (error) {
             if (!error.response) {
@@ -84,55 +84,55 @@ export const updateWorkout = createAsyncThunk(
     }
 );
 
-const workoutSlice = createSlice({
-    name: "workout",
+const goalSlice = createSlice({
+    name: "goal",
     initialState: initialStates,
     extraReducers: {
-        [workoutsList.pending]: (state) => {
+        [goalsList.pending]: (state) => {
             state.status = "loading";
         },
-        [workoutsList.fulfilled]: (state, action) => {
+        [goalsList.fulfilled]: (state, action) => {
             state.status = "succeeded";
             state.data = action.payload;
             state.isSuccess = false;
             state.reload = null;
             state.totalCount = action.payload.totalResults;
         },
-        [workoutsList.rejected]: (state, action) => {
+        [goalsList.rejected]: (state, action) => {
             state.status = "failed";
             state.error = action.payload;
         },
-        [addWorkout.pending]: (state) => {
+        [addGoal.pending]: (state) => {
             state.status = "loading";
         },
-        [addWorkout.fulfilled]: (state, action) => {
+        [addGoal.fulfilled]: (state, action) => {
             state.status = "succeeded";
             state.clubData = action.payload;
             state.isSuccess = true;
         },
-        [addWorkout.rejected]: (state, action) => {
+        [addGoal.rejected]: (state, action) => {
             state.status = "failed";
             state.error = action.payload;
         },
-        [deleteWorkout.pending]: (state) => {
+        [deletegoal.pending]: (state) => {
             state.status = "loading";
         },
-        [deleteWorkout.fulfilled]: (state, action) => {
+        [deletegoal.fulfilled]: (state, action) => {
             state.status = "succeeded";
             state.reload = action.payload;
         },
-        [deleteWorkout.rejected]: (state, action) => {
+        [deletegoal.rejected]: (state, action) => {
             state.status = "failed";
             state.error = action.payload;
         },
-        [updateWorkout.pending]: (state) => {
+        [updateGoal.pending]: (state) => {
             state.status = "loading";
         },
-        [updateWorkout.fulfilled]: (state, action) => {
+        [updateGoal.fulfilled]: (state, action) => {
             state.status = "succeeded";
             state.reload = action.payload;
         },
-        [updateWorkout.rejected]: (state, action) => {
+        [updateGoal.rejected]: (state, action) => {
             state.status = "failed";
             state.error = action.payload;
         }
@@ -150,8 +150,8 @@ const workoutSlice = createSlice({
     }
 });
 
-export const { clearClubProfile, clearClubReload, clearClubList } = workoutSlice.actions
+export const { clearClubProfile, clearClubReload, clearClubList } = goalSlice.actions
 
-const { reducer } = workoutSlice;
+const { reducer } = goalSlice;
 
 export default reducer;
